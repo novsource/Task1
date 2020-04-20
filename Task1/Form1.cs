@@ -108,10 +108,7 @@ namespace Task1
             Matrix MatrixB = new Matrix(Matrix.TextToMatrix(SecondTxt.Text));
             Matrix MatrixC = new Matrix(Matrix.TextToMatrix(ThirdTxt.Text));
 
-            MatrixA = Matrix.MatrixSwap(Matrix.TextToMatrix(FirstTxt.Text), MatrixA);
-            MatrixB = Matrix.MatrixSwap(Matrix.TextToMatrix(SecondTxt.Text), MatrixB);
-            MatrixC = Matrix.MatrixSwap(Matrix.TextToMatrix(ThirdTxt.Text), MatrixC);
-
+           
             Matrix MatrixResult = new Matrix(MatrixA.Size);
 
             if (MatrixA.SumBelow() + (MatrixB.SumAbove()) > MatrixB.SumAbove() + MatrixC.SumAbove())
@@ -176,7 +173,6 @@ namespace Task1
             }
             
           
-
             public static int[,] TextToMatrix(string text)
             {
                 var lines = text.Split(new string[] { Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
