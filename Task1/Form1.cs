@@ -104,9 +104,9 @@ namespace Task1
         private void button3_Click(object sender, EventArgs e)
         {
             ResultBox.Text = "";
-            Matrix MatrixA = new Matrix(Matrix.getSize(Matrix.TextToMatrix(FirstTxt.Text)));
-            Matrix MatrixB = new Matrix(Matrix.getSize(Matrix.TextToMatrix(SecondTxt.Text)));
-            Matrix MatrixC = new Matrix(Matrix.getSize(Matrix.TextToMatrix(ThirdTxt.Text)));
+            Matrix MatrixA = new Matrix(Matrix.TextToMatrix(FirstTxt.Text));
+            Matrix MatrixB = new Matrix(Matrix.TextToMatrix(SecondTxt.Text));
+            Matrix MatrixC = new Matrix(Matrix.TextToMatrix(ThirdTxt.Text));
 
             MatrixA = Matrix.MatrixSwap(Matrix.TextToMatrix(FirstTxt.Text), MatrixA);
             MatrixB = Matrix.MatrixSwap(Matrix.TextToMatrix(SecondTxt.Text), MatrixB);
