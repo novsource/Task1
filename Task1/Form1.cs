@@ -175,10 +175,7 @@ namespace Task1
                 }
             }
             
-            public static int getSize (int[,] Matrix)
-            {
-                return Matrix.GetLength(0);
-            }
+          
 
             public static int[,] TextToMatrix(string text)
             {
