@@ -49,20 +49,23 @@ namespace Task1
 
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            var MatrixInputForm = new Form2();
+            var MatrixInputForm = new Form2(); // создаем форму
 
-            MatrixInputForm.ShowDialog();
+            MatrixInputForm.ShowDialog(); //отображаем пользователю
 
             if (MatrixInputForm.ShowDialog() == DialogResult.OK)
             {
-                FirstTxt.Text = MatrixInputForm.ReturnFirstMatrix();
+                //Возвращаем значения содержащиеся в TextBox из MatrixInputForm 
+                FirstTxt.Text = MatrixInputForm.ReturnFirstMatrix(); 
                 SecondTxt.Text = MatrixInputForm.ReturnSecondMatrix();
                 ThirdTxt.Text = MatrixInputForm.ReturnThirdMatrix();
             }
         }
 
+        //Метод для заполнения 3-ех TextBox матрицами с рандомными элементами
         public void RandomFill(int Size)
         {
             FirstTxt.Text = "";
@@ -135,23 +138,27 @@ namespace Task1
 
     [Serializable]
 
+    //Класс "Матрицы"
         public class Matrix
         {
             public int[,] data;
             private int n;
            
+        //Конструктор для создания экземпляров класса (Матриц) по кол-ву элементов
             public Matrix(int n)
                 {
                     this.data = new int[n, n];
                     this.n = n;
                 }
 
+        //Конструктор для создания экземпляров класса (Матриц) при помощи двумерного массива
         public Matrix(int[,] data)
         {
             this.data = data;
             this.n = data.GetLength(0);
         }
 
+        // метод возвращающий размер матрицы
         public int Size 
             {
                 get
@@ -160,6 +167,7 @@ namespace Task1
                 }
             }
 
+        //метод для собственной индексации
             public int this[int i, int j]
             {
                 get 
@@ -172,7 +180,7 @@ namespace Task1
                 }
             }
             
-          
+          //метод для считывания матриц с текстовых файлов
             public static int[,] TextToMatrix(string text)
             {
                 var lines = text.Split(new string[] { Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -191,6 +199,7 @@ namespace Task1
                 return matrix;
             }
 
+        //переопределение операторов  
         public static Matrix operator +(Matrix A, Matrix B)
             {
                 var resultMatix = new Matrix(A.Size);
@@ -255,20 +264,9 @@ namespace Task1
                 }
             }
             return resultMatrix;
-        }
-
-        public static Matrix MatrixSwap (int[,] Matrix, Matrix resultMatrix)
-        {
-            for (int i = 0; i < Matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < Matrix.GetLength(1); j++)
-                {
-                    resultMatrix[i, j] = Matrix[i, j];
-                }
-            }
-            return resultMatrix;
-        }
+        }   
         
+        //транспонирование матриц
         public Matrix Transponation()
         {
             var matrix = new Matrix(this.data);
@@ -303,6 +301,7 @@ namespace Task1
             return true; 
         }
 
+        //метод для поиска суммы элементов выше главной диагонали
         public int SumAbove()
         {
             var MatrixA = new Matrix(this.data);
@@ -322,6 +321,7 @@ namespace Task1
             return sum;
         }
 
+        //метод для поиска суммы элементов ниже главной диагонали
         public int SumBelow ()
         {
             var MatrixA = new Matrix(this.data);
